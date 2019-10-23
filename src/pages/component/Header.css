@@ -1,0 +1,32 @@
+.Header-bar{
+    display: flex;
+    justify-content: center;
+    height: 100px;
+    background: #555;
+}
+
+.Header-menu{
+    display: flex;
+    width: 70%;
+    height: 100%;
+    align-items: flex-end;
+}
+
+.Header-menu a {
+    flex: 1;
+    height: 40px;
+}
+
+.Header-menu-box {
+    background: #282c34;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    border: 1px solid #555;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border-bottom: none;
+    margin: -1px 0 -1px 0;
+}

@@ -1,12 +1,14 @@
 import React from 'react';
-
+import './Home.css';
 const Home = () => {
     return (
-        <div>
-            <h2>
-                임시 홈
-            </h2>
-        </div>
+        <>
+            <div className="Home-main">
+                <h1>
+                    Simple React Application
+                </h1>
+            </div>
+        </>
     );
 };
 

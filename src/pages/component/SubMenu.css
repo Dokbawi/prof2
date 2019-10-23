@@ -1,0 +1,13 @@
+.subMenu-bar{
+    display: flex;
+    width: 100%;
+    height: 50px;
+}
+
+.subMenu-bar-box{
+    flex: 1;
+    justify-content: center;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}

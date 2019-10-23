@@ -1,0 +1,10 @@
+.App-main{
+    height: 100%;
+    display: flex;
+    flex: 1;
+    margin-left: 15%;
+    margin-right: 15%;
+    overflow-y: auto;
+    flex-direction: column;
+    padding-top: 5px;
+}

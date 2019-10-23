@@ -1,18 +1,27 @@
 import React, { Component } from 'react';
-import { Route } from 'react-router-dom';
-import Home from '../pages/Home';
+import { Route, Switch } from 'react-router-dom';
+import NoMatchPage from '../pages/component/NoMatchPage';
 import Header from '../pages/component/Header';
-// import { Header } from '../pages/component';
-
+import Home from '../pages/Home';
+import DataProcessing from '../pages/DataProcessing';
+import './App.css';
 
 class App extends Component {
     render() {
         return (
-            <div>
+            <>
                 <Header />
-                <Route exact path="/" component={Home}/>
-                {/* <Route path="/" component={About}/> */}
-            </div>
+                
+                <div className="App-main">
+                    <Switch>
+                        <Route exact={true} path="/" component={Home}/>
+                        <Route exact path="/DataProcessing" component={DataProcessing}/>
+                        <Route component={NoMatchPage} />
+                    </Switch>
+
+                </div>
+                
+            </>
         );
     }
 }
