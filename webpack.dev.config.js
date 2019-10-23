@@ -1,5 +1,6 @@
 const path = require('path');
 const webpack = require('webpack');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
     name : 'development-prof',
@@ -27,6 +28,9 @@ module.exports = {
     plugins: [
         new webpack.optimize.OccurrenceOrderPlugin(),
         new webpack.HotModuleReplacementPlugin(),
+        new MiniCssExtractPlugin({
+            filename: 'style.css'
+        }),
     ],
 
     output: {
@@ -50,6 +54,10 @@ module.exports = {
                         'react-hot-loader/babel',
                     ]
                 },
+            },
+            {
+                test: /\.css$/,
+                use: [MiniCssExtractPlugin.loader, 'css-loader'],
             },
         ],
     },

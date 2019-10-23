@@ -1,10 +1,9 @@
 const path = require('path');
 
 module.exports = {
-
     name : 'prof',
-    mode : 'development',
-    devtool : 'inline-source-map', // hidden-source-map
+    mode : 'production',
+    devtool : 'hidden-source-map', // hidden-source-map
     resolve :  {
         extensions : ['.js', '.jsx']
     },
