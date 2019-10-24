@@ -4,6 +4,8 @@
   "description": "",
   "main": "webpack.config.js",
   "dependencies": {
+    "axios": "^0.19.0",
+    "fs": "0.0.1-security",
     "nodemon": "^1.19.4",
     "path": "^0.12.7",
     "react": "^16.10.2",
@@ -29,7 +31,7 @@
     "clean": "rm -rf build public/bundle.js",
     "build": "babel server --out-dir build && webpack",
     "start": "set NODE_ENV=production&&node ./build/main.js",
-    "dev": "set NODE_ENV=development&&node ./build/main.js"
+    "dev": "set NODE_ENV=development&&nodemon ./server/main.js"
   },
   "repository": {
     "type": "git",
