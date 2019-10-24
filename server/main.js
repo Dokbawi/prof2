@@ -5,6 +5,7 @@
 const express = require('express');
 const WebpackDevServer = require('webpack-dev-server');
 const webpack = require('webpack');
+const DataProcessingRouter = require('./routes/DataProcessing');
 
 const app = express();
 const port = 3000;
@@ -23,10 +24,18 @@ if(process.env.NODE_ENV == 'development') {
 
 app.use('/', express.static(path.resolve(__dirname, '../public')));
 
+
+app.get('/hello', (req, res) => {
+    res.send('dsadas');
+})
+
+app.use('/DataProcessing', DataProcessingRouter);
+
 app.get('*', (req, res, next) => {
     if(req.path.split('/')[1] === 'static') return next();
     res.sendFile(path.resolve(__dirname, '../public/index.html'));
 });
+
 
 const server = app.listen(port, () => {
     console.log('Express', port);

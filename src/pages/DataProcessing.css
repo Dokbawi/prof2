@@ -1,0 +1,31 @@
+.DataProcessing-data-list-bar{
+    flex-direction: column;
+    display: flex;
+    border: 1px solid #e2e2e2;
+}
+
+.DataProcessing-data-list-title{
+    display: flex;
+    border-bottom: 1px solid #e2e2e2;
+    justify-content: flex-start;
+    align-items: center;
+    height: 50px;
+    font-size: 30px;
+    font-weight: bold;
+    padding-left: 10px;
+}
+
+
+.DataProcessing-data-list-detail{
+    display: flex;
+}
+
+.DataProcessing-data-list-detail-list{
+    display: flex;
+    flex: 1;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #e2e2e2;
+    margin: -1px;
+    height: 30px;
+}
