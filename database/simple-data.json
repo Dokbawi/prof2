@@ -1,7 +1,1 @@
-{
-    "Cat" : {
-        "title":"Cat",
-        "name" : "Oz",
-        "age" : "1"
-    }
-}
+{"dumy":[{"title":"Cat ","name":"Oz","age":"1","info":"white-bengal"},{"title":"Cat ","name":"Chex","age":"2","info":"bengal like tiger"}]}

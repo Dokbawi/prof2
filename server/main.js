@@ -5,6 +5,7 @@
 const express = require('express');
 const WebpackDevServer = require('webpack-dev-server');
 const webpack = require('webpack');
+const bodyPaser = require('body-parser');
 const DataProcessingRouter = require('./routes/DataProcessing');
 
 const app = express();
@@ -22,6 +23,8 @@ if(process.env.NODE_ENV == 'development') {
     });
 }
 
+app.use(bodyPaser.urlencoded({extended : false}));
+app.use(bodyPaser.json());
 app.use('/', express.static(path.resolve(__dirname, '../public')));
 
 

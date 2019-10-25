@@ -40,31 +40,16 @@ class ShowData extends React.Component {
     constructor(props){
         super(props)
         this.state = {
-            key : [],
-            val : []
+            data : []
         };
         this.getData();
-        this.key = [];
-        this.val = [];
-        
     }
 
     getData = () => {
-
-        console.log('?');
         axios.post('/DataProcessing/getData').then((res) =>{
-
-            let key = [];
-            let val = [];
-            for(let tempKey in res.data) {
-                this.key.push(key);
-                this.val.push(res.data[tempKey]);
-            }
-
             this.setState({
-                key: this.key,
-                val: this.val,
-            })
+                data: res.data || []
+            });
         }).catch(error => {
             console.log(error.message);
         });
@@ -74,9 +59,17 @@ class ShowData extends React.Component {
         return (
             <>
                 {
-                    this.state.key.map((v, idx) => {
+                    this.state.data.map((v, idx) => {
                          return (
-                            <DataList key={idx} data={this.state.val[idx]} title={v} />
+                            <div className="DataProcessing-data-list-detail" key={idx}>
+                                <div className="DataProcessing-data-list-detail-list">
+                                    {idx + 1}
+                                </div>
+                                <DataTr title="Title" content={v.title} key="title" />
+                                <DataTr title="Name" content={v.name} key="name" />
+                                <DataTr title="Age" content={v.age} key="age" />
+                                <DataTr title="Info" content={v.info} key="info" />
+                            </div>
                          )
                     })
                 }
@@ -85,60 +78,127 @@ class ShowData extends React.Component {
     }
 }
 
-class DataList extends React.Component {
-
-    constructor(props){
-        super(props);
-        this.list = [];
-        this.listKey = []
-        for(let key in this.props.data) {
-            this.list.push(this.props.data[key]);
-            this.listKey.push(key);
-        }
-    }
-
-   
-    show = () => {
-
-        return  (
-            <>
-                <div className="DataProcessing-data-list-detail"> 
-                    {
-                        this.list.map((v, idx) => {
-                            return (
-                                <div className="DataProcessing-data-list-detail-list" key={v} >
-                                    {this.listKey[idx]} : {v}
-                                </div>
-                            )
-                        })
-                    }
-                </div>
-            </>
-        )
-    }
-
-    render(){
-        return (
-            <>
-                <div className="DataProcessing-data-list-bar">
-                    <div className="DataProcessing-data-list-title">
-                        { this.props.data.title }
-                    </div>
-                    { this.show() }
-                </div>
-            </>
-        )
-    }
-}
-
-const SaveData = () =>{
+const DataTr = (props) => {
     return (
         <>
-            <div>
-                SetData
+            <div className="DataProcessing-data-list-detail-list">
+                { props.title } : { props.content }
             </div>
         </>
     )
+} 
+
+class SaveData extends React.Component {
+
+    constructor(props) {
+        super(props)
+        this.state = {
+            data : []
+        };
+        this.getData();
+    }
+
+    $title;
+    $name;
+    $age;
+    $info;
+    
+    getData = () => {
+        axios.post('/DataProcessing/getData').then((res) =>{
+            this.setState({
+                data:res.data || []
+            });
+        }).catch(error => {
+            console.log(error.message);
+        });
+    }
+
+    delData = (idx) => {
+        this.setState({
+            data : this.state.data.splice(idx, 1)
+        });
+
+        axios.post('/DataProcessing/updateData',{
+            data: {
+                dumy: this.state.data || []
+            }
+            }).then((res) => {
+                this.getData();
+            });
+    }
+
+    addData = () => {
+        let tempObj = {}
+        
+        tempObj.title = this.$title.value;
+        tempObj.name = this.$name.value;
+        tempObj.age = this.$age.value;
+        tempObj.info = this.$info.value;
+
+        for(let key in tempObj) {
+            if(tempObj[key].trim() === "") {
+                alert('Empty : ' + key);
+                return;
+            }
+        }
+        this.state.data.push(tempObj);
+        axios.post('/DataProcessing/updateData',{
+            data: {
+                dumy: this.state.data || []
+            }
+            }).then((res) => {
+                this.getData();
+                this.$title.value = "";
+                this.$name.value = "";
+                this.$age.value = "";
+                this.$info.value = "";
+            });
+    }
+
+    render() {
+        return (
+            <>
+                {
+                    this.state.data.map((v, idx) => {
+                         return (
+                            <div className="DataProcessing-data-list-detail" key={idx}>
+                                <div className="DataProcessing-data-list-detail-list">
+                                    {idx + 1}
+                                </div>
+                                <DataTr title="Title" content={v.title} key="title" />
+                                <DataTr title="Name" content={v.name} key="name" />
+                                <DataTr title="Age" content={v.age} key="age" />
+                                <DataTr title="Info" content={v.info} key="info" />
+                                <div className="DataProcessing-del-btn" onClick={()=>this.delData(idx)}>
+                                        Del
+                                </div>
+                            </div>
+                         )
+                    })
+                }
+                <div className="DataProcessing-data-list-detail">
+                    <div className="DataProcessing-data-list-detail-list">
+                        Title : <input ref={(c) => this.$title = c } type="text"  />
+                    </div>
+
+                    <div className="DataProcessing-data-list-detail-list">
+                        Name : <input ref={(c) => this.$name = c } type="text" />
+                    </div>
+
+                    <div className="DataProcessing-data-list-detail-list">
+                        Age : <input ref={(c) => this.$age = c } type="text" />
+                    </div>
+
+                    <div className="DataProcessing-data-list-detail-list">
+                        Info : <input ref={(c) => this.$info = c } type="text" />
+                    </div>
+                    <div className="DataProcessing-add-btn" onClick={this.addData}>
+                        Add
+                    </div>
+                </div>
+            </>
+        )
+    }
 }
 
 export default DataProcessing;
