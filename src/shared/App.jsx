@@ -4,6 +4,7 @@ import NoMatchPage from '../pages/component/NoMatchPage';
 import Header from '../pages/component/Header';
 import Home from '../pages/Home';
 import DataProcessing from '../pages/DataProcessing';
+import Timer from '../pages/Timer';
 import './App.css';
 
 class App extends Component {
@@ -14,8 +15,9 @@ class App extends Component {
                 
                 <div className="App-main">
                     <Switch>
-                        <Route exact={true} path="/" component={Home}/>
+                        <Route exact path="/" component={Home}/>
                         <Route exact path="/DataProcessing" component={DataProcessing}/>
+                        <Route exact path="/Timer" component={Timer}/>
                         <Route component={NoMatchPage} />
                     </Switch>
 

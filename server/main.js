@@ -26,11 +26,8 @@ if(process.env.NODE_ENV == 'development') {
 app.use(bodyPaser.urlencoded({extended : false}));
 app.use(bodyPaser.json());
 app.use('/', express.static(path.resolve(__dirname, '../public')));
+app.use('/music', express.static(path.join(__dirname, '../public/static/music')));
 
-
-app.get('/hello', (req, res) => {
-    res.send('dsadas');
-})
 
 app.use('/DataProcessing', DataProcessingRouter);
 

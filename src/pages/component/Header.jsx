@@ -10,6 +10,9 @@ class Header extends React.Component {
         },{
             menuName : "DataProcessing",
             menuSrc : "/DataProcessing"
+        },{
+            menuName : "Timer",
+            menuSrc : "/Timer"
         },
     ];
 
