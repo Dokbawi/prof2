@@ -7,4 +7,5 @@
     overflow-y: auto;
     flex-direction: column;
     padding-top: 5px;
+    padding: 1px;
 }
