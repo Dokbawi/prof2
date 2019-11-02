@@ -1,10 +1,16 @@
 # React Apllication
 React, Nodejs, Express 를 사용한 간단한 웹 어플리케이션 입니다.
 
+![Alt text](./main.png)
+
+![Alt text](./data.png)
+
+![Alt text](./clock.png)
+
 # 사용 기술
-* React
-* Nodejs
-* Express
+* React 16
+* Nodejs 8
+* Express 4
 * Axio 
 * Webpack 4
 * Babel 7
