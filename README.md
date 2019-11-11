@@ -7,6 +7,9 @@ React, Nodejs, Express 를 사용한 간단한 웹 어플리케이션 입니다.
 
 ![Alt text](./clock.png)
 
+![Alt text](./redux.png)
+
+
 # 사용 기술
 * React 16
 * Redux / Redux-thunk
