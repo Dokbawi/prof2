@@ -13,8 +13,13 @@ class Header extends React.Component {
         },{
             menuName : "Timer",
             menuSrc : "/Timer"
+        },{
+            menuName : "ReduxTest",
+            menuSrc : "/ReduxTest"
         },
     ];
+
+    
 
     render() {
         return (

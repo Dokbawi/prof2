@@ -7,6 +7,7 @@ const WebpackDevServer = require('webpack-dev-server');
 const webpack = require('webpack');
 const bodyPaser = require('body-parser');
 const DataProcessingRouter = require('./routes/DataProcessing');
+const ReduxTestRouter = require('./routes/ReduxTest');
 
 const app = express();
 const port = 3000;
@@ -30,6 +31,9 @@ app.use('/music', express.static(path.join(__dirname, '../public/static/music'))
 
 
 app.use('/DataProcessing', DataProcessingRouter);
+app.use('/ReduxTest', ReduxTestRouter);
+
+
 
 app.get('*', (req, res, next) => {
     if(req.path.split('/')[1] === 'static') return next();

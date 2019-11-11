@@ -5,6 +5,7 @@ import Header from '../pages/component/Header';
 import Home from '../pages/Home';
 import DataProcessing from '../pages/DataProcessing';
 import Timer from '../pages/Timer';
+import ReduxTest from '../pages/ReduxTest';
 import './App.css';
 
 class App extends Component {
@@ -18,6 +19,7 @@ class App extends Component {
                         <Route exact path="/" component={Home}/>
                         <Route exact path="/DataProcessing" component={DataProcessing}/>
                         <Route exact path="/Timer" component={Timer}/>
+                        <Route exact path="/ReduxTest" component={ReduxTest}/>
                         <Route component={NoMatchPage} />
                     </Switch>
 
