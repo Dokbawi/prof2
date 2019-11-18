@@ -1,16 +1,14 @@
+import createSagaMiddleware from 'redux-saga'
+import rootSaga from './actions/listSaga'
 const { createStore, applyMiddleware, compose } = require('redux');
 const { composeWithDevTools } = require('redux-devtools-extension');
+// const createSagaMiddleware = require('redux-saga');
 const { reducer } = require('./reducers/index');
-
-const firestMiddleware = (store) => (dispatch) => (action) =>{
-    dispatch(action);
-}
 
 const thunkMiddleware = (store) => (dispatch) => (action) =>{
     if(typeof action === 'function') {
         return action(store.dispatch, store.getState);
     }
-
     return dispatch(action);
 }
 
@@ -27,9 +25,12 @@ const thunkMiddleware = (store) => (dispatch) => (action) =>{
 //         thunkMiddleware,
 //     ),
 // );
+
+const sagaMiddleware = createSagaMiddleware();
+
 const ware = applyMiddleware(
-    firestMiddleware,
     thunkMiddleware,
+    sagaMiddleware,
 );
 
 const enhancer = process.env.NODE_ENV === 'production' ? 
@@ -40,9 +41,8 @@ const initialState = {
     list : [],
 };
 
-const store = createStore(reducer, enhancer);
+// const store = createStore(reducer, enhancer);
+// module.exports = store;
 
-
-console.log('store : ', store);
-
-module.exports = store;
+export default createStore(reducer, enhancer);
+sagaMiddleware.run(rootSaga);

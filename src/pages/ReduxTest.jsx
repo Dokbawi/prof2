@@ -23,7 +23,8 @@ const DataConpoment = () => {
     const isLoading = useSelector(({ list }) => list.isLoading);
     const dataList = useSelector(({ list }) => list.list);
     const onClick = useCallback(() => {
-        dispatch(getList());
+        // dispatch(getList()); //redux-thunk
+        dispatch({type: "GET_LIST_ASYNC"});
     })
     return (
         <>

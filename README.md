@@ -12,7 +12,7 @@ React, Nodejs, Express 를 사용한 간단한 웹 어플리케이션 입니다.
 
 # 사용 기술
 * React 16
-* Redux / Redux-thunk
+* Redux / Redux-thunk / Redux-saga
 * Nodejs 8
 * Express 4
 * Axio 
